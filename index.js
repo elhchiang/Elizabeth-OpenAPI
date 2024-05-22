@@ -1,4 +1,4 @@
-.then(response => {
+then(response => {
     if (!response.ok) {
       throw new Error('Request failed');
     }
