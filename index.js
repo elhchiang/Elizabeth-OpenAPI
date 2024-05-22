@@ -11,8 +11,7 @@
     console.error('An error occurred:', error);
   });
 
-  async function fetcfetch('https://jsonplaceholder.typicode.com/posts/1')
-hData() {
+  async function fetchData() {
     try {
       const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
       
@@ -28,5 +27,4 @@ hData() {
   }
   
   fetchData();
-
   
