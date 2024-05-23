@@ -1,30 +1,72 @@
-then(response => {
-    if (!response.ok) {
-      throw new Error('Request failed');
-    }
-    return response.json(); // Parse the response as JSON
-  })
-  .then(data => {
-    console.log(data); // Do something with the data
-  })
-  .catch(error => {
-    console.error('An error occurred:', error);
-  });
+const catOrDogContainer = document.getElementById("catOrDogContainer");
+const fetchCatBtn = document.getElementById("fetchCat");
+const fetchDogBtn = document.getElementById("fetchDog");
 
-  async function fetchData() {
-    try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
-      
-      if (!response.ok) {
-        throw new Error('Request failed');
+// Fetch a cat
+fetchCatBtn.addEventListener("click", () => {
+  fetch(
+    "https://api.thecatapi.com/v1/images/search?limit=1&has_breeds=1&api_key=live_YNdBDkb6hJuKn2sTeEUeI2J2p14xqL77loXkCwJJVr284EgKEM1nSrVDrdrpCZKb"
+  )
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Invalid Request");
       }
+      return res.json();
+    })
+    .then((data) => {
+      catOrDogContainer.innerHTML = "";
+
+      const catImgUrl = data[0].url;
+      const catImg = document.createElement("img");
+      catImg.src = catImgUrl;
+
+      const breedName = data[0].breeds[0].name;
+      const catBreedTitle = document.createElement("h2");
+      catBreedTitle.innerText = breedName;
+
+      const breedDescription = document.createElement("p");
+      breedDescription.innerText = data[0].breeds[0].description;
+
+      catOrDogContainer.appendChild(catImg);
+      catOrDogContainer.appendChild(catBreedTitle);
+      catOrDogContainer.appendChild(breedDescription);
+    })
+    .catch((err) => {
+      console.warn(err);
+    });
+});
+
+// Fetch a dog
+fetchDogBtn.addEventListener("click", () => {
+  fetch(
+    "https://api.thedogapi.com/v1/images/search?limit=1&has_breeds=1&api_key=live_cJYKf789eUk5mDuCfoXp2O9FovgZd1gbIDkftrZVjGJgtRclLAkuiP9k0OnrpmMy"
+  )
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Invalid Request");
+      }
+      return res.json();
+    })
+    .then((data) => {
+      catOrDogContainer.innerHTML = "";
+
+      const dogImgUrl = data[0].url;
+      const dogImg = document.createElement("img");
+      dogImg.src = dogImgUrl;
+
+      const breedName = data[0].breeds[0].name;
+      const dogBreedTitle = document.createElement("h2");
+      dogBreedTitle.innerText = breedName;
+
+      const breedTemperament = document.createElement("p");
+      breedTemperament.innerText = data[0].breeds[0].temperament;
       
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('An error occurred:', error);
-    }
-  }
-  
-  fetchData();
-  
+      catOrDogContainer.appendChild(dogImg);
+      catOrDogContainer.appendChild(dogBreedTitle);
+      catOrDogContainer.appendChild(breedTemperament);
+      
+    })
+    .catch((err) => {
+      console.warn(err);
+    });
+});
