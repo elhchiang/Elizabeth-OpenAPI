@@ -5,7 +5,7 @@ const fetchDogBtn = document.getElementById("fetchDog");
 // Fetch a cat
 fetchCatBtn.addEventListener("click", () => {
   fetch(
-    "https://api.thecatapi.com/v1/images/search?limit=1&has_breeds=1&api_key=live_YNdBDkb6hJuKn2sTeEUeI2J2p14xqL77loXkCwJJVr284EgKEM1nSrVDrdrpCZKb"
+    "https://api.thecatapi.com/v1/images/search?limit=1&has_breeds=1&api_key=live_LkfgbmcJd1AM5uw3ba5hgDcTp5serIe3RNIoQXk3jl6Y2po9JL8Hyig7rpr36pyy"
   )
     .then((res) => {
       if (!res.ok) {
@@ -39,7 +39,7 @@ fetchCatBtn.addEventListener("click", () => {
 // Fetch a dog
 fetchDogBtn.addEventListener("click", () => {
   fetch(
-    "https://api.thedogapi.com/v1/images/search?limit=1&has_breeds=1&api_key=live_cJYKf789eUk5mDuCfoXp2O9FovgZd1gbIDkftrZVjGJgtRclLAkuiP9k0OnrpmMy"
+    "https://api.thedogapi.com/v1/images/search?limit=1&has_breeds=1&api_key=live_YxNTAdm9ukAsytgRM7KPeKX9Bfpvug3AUGtyn82xCN5d9JepumulhXFpZglqsCAr"
   )
     .then((res) => {
       if (!res.ok) {
